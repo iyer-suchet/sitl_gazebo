@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'motor_1_joint', 'motor_2_joint', 'motor_3_joint', 'motor_4_joint', 'motor_5_joint', 'motor_6_joint', 'motor_7_joint', 'motor_8_joint', 'cruise_motor_joint', 'aileron_right_joint', 'aileron_left_joint', 'elevator_joint', 'rudder_joint', ]

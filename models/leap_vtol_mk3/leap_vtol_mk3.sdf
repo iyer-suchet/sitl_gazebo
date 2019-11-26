@@ -1,0 +1,1420 @@
+<?xml version="1.0"?>
+<sdf version='1.5'>
+  <model name='leap_vtol_mk3'> 
+    <pose>0 0 0.246 0 0 0</pose> 
+    
+    <link name='base_link'> 
+      <pose>0 0 0 0 0 0</pose> 
+      <inertial>
+        <pose>-5.6365E-05 0.12885 -0.50375 0 0 0</pose>
+        <mass>5.26029</mass>
+        <inertia> 
+          <ixx>514787000000</ixx> 
+          <ixy>76545660</ixy>
+          <ixz>-152720</ixz>
+          <iyy>1158280000000</iyy>
+          <iyz>-34080623440</iyz>
+          <izz>684276000000</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'> 
+        <pose>0 0 -0.07 0 0 0</pose>
+        <geometry>
+          <mesh>
+	    <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/base_link.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1.0</kd>
+              <max_vel>0.1</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://leap_vtol_mk3/meshes/base_link.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    
+    <link name='leap_vtol_mk3/imu_link'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.015</mass>
+        <inertia>
+          <ixx>1e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-05</iyy>
+          <iyz>0</iyz>
+          <izz>1e-05</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name='leap_vtol_mk3/imu_joint' type='revolute'>
+      <child>leap_vtol_mk3/imu_link</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_1'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>1.8619E-08 0.0054745 -6.6772E-07 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>-1.4938E-13</ixy>
+          <ixz>9.2457E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>-2.8276E-13</iyz>
+          <izz>1.9619E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_1.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_1_joint' type='revolute'>
+      <pose>-0.35935 0.28363 0.23968 1.5708 0 1.7806</pose>
+      <child>motor_1</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_2'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>3.6051E-10 0.0054745 2.6263E-09 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>6.4409E-15</ixy>
+          <ixz>9.2457E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>4.7163E-14</iyz>
+          <izz>1.9619E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_2.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_2.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_2_joint' type='revolute'>
+      <pose>0.35935 0.28363 0.23968 1.5708 0 2.6481</pose>
+      <child>motor_2</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_3'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.8643E-08 0.0054745 6.6754E-07 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>1.4908E-13</ixy>
+          <ixz>9.2457E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>2.8112E-13</iyz>
+          <izz>1.9619E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_3_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_3.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_3.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_3_joint' type='revolute'>
+      <pose>0.35935 0.83392 0.23968 1.5708 0 2.7896</pose>
+      <child>motor_3</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_4'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>6.4855E-08 0.0054745 6.5904E-08 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>4.254E-13</ixy>
+          <ixz>9.2457E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>-1.6876E-12</iyz>
+          <izz>1.962E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_4_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_4.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_4_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_4.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_4_joint' type='revolute'>
+      <pose>-0.35935 0.83392 0.23968 1.5708 0 -2.2362</pose>
+      <child>motor_4</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_5'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-2.3972E-11 0.0054745 -1.7397E-10 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>-3.0781E-16</ixy>
+          <ixz>9.2457E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>-1.6139E-15</iyz>
+          <izz>1.9619E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_5_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_5.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_5_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_5.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_5_joint' type='revolute'>
+      <pose>0.67935 0.28363 0.23968 1.5708 0 2.7896</pose>
+      <child>motor_5</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_6'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.0394E-07 0.0054745 1.2568E-06 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>-1.6107E-13</ixy>
+          <ixz>9.2462E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>2.0205E-12</iyz>
+          <izz>1.962E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_6_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_6.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_6_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_6.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_6_joint' type='revolute'>
+      <pose>-0.67985 0.28363 0.23968 1.5708 0 -2.3392</pose>
+      <child>motor_6</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_7'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-8.4037E-08 0.0054745 5.9805E-07 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>-2.8647E-13</ixy>
+          <ixz>9.2462E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>2.0534E-12</iyz>
+          <izz>1.962E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_7_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_7.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_7_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_7.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_7_joint' type='revolute'>
+      <pose>-0.67985 0.83392 0.23968 1.5708 0 1.8808</pose>
+      <child>motor_7</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='motor_8'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>3.84480225434913E-10 0.00547447836547874 2.80021761334126E-09 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.01327899926299E-05</ixx>
+          <ixy>6.74865407710483E-15</ixy>
+          <ixz>9.24660696074812E-07</ixz>
+          <iyy>2.02966094872409E-05</iyy>
+          <iyz>4.87763759161582E-14</iyz>
+          <izz>1.96200454476914E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='motor_8_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_8.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='motor_8_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/motor_8.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='motor_8_joint' type='revolute'>
+      <pose>0.67935 0.83392 0.23968 1.5708 0 2.7896</pose>
+      <child>motor_8</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='cruise_motor'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>3.6051E-10 -0.0054311 2.6263E-09 0 0 0</pose>
+        <mass>0.0048824</mass>
+        <inertia>
+          <ixx>2.0132E-05</ixx>
+          <ixy>6.4408E-15</ixy>
+          <ixz>9.2458E-07</ixz>
+          <iyy>2.0296E-05</iyy>
+          <iyz>4.7163E-14</iyz>
+          <izz>1.9619E-07</izz>
+        </inertia>
+      </inertial>
+      <collision name='cruise_motor_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/cruise_motor.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='cruise_motor_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/cruise_motor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='cruise_motor_joint' type='revolute'>
+      <pose>0 1.4624 0.1585 3.1416 -0.97948 0</pose>
+      <child>cruise_motor</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='aileron_right'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.000359429626028307 -0.00792280043359631 -0.25807892576358 0 0 0</pose>
+        <mass>0.000477234933527631</mass>
+        <inertia>
+          <ixx>2.19976884447218E-09</ixx>
+          <ixy>3.40084968517089E-09</ixy>
+          <ixz>5.86757159837328E-19</ixz>
+          <iyy>2.05168737623326E-08</iyy>
+          <iyz>-7.70638457316328E-19</iyz>
+          <izz>2.23984858895856E-08</izz>
+        </inertia>
+      </inertial>
+      <collision name='aileron_right_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/aileron_right.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='aileron_right_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/aileron_right.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='aileron_right_joint' type='revolute'>
+    <pose>-0.45216 0.65442 0.20642 1.5699 0.015027 1.5726</pose>
+      <child>aileron_right</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0.057465 0 0.99835</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='aileron_left'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>9.8636E-05 -0.0079228 0.26261 0 0 0</pose>
+        <mass>0.00047723</mass>
+        <inertia>
+          <ixx>2.1998E-09</ixx>
+          <ixy>3.4008E-09</ixy>
+          <ixz>-4.0722E-19</ixz>
+          <iyy>2.0517E-08</iyy>
+          <iyz>5.1609E-19</iyz>
+          <izz>2.2398E-08</izz>
+        </inertia>
+      </inertial>
+      <collision name='aileron_left_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/aileron_left.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='aileron_left_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/aileron_left.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='aileron_left_joint' type='revolute'>
+     <pose>0.44556 0.65481 0.20642 1.5808 0.17275 1.5699</pose>
+      <child>aileron_left</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0.057465 0 -0.99835</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='elevator'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.0204328544188923 -0.00197488435501691 5.86160068176164E-15 0 0 0</pose>
+        <mass>0.0473579286571473</mass>
+        <inertia>
+          <ixx>0.000345850971992126</ixx>
+          <ixy>4.17697374302898E-07</ixy>
+          <ixz>-2.75413791250375E-20</ixz>
+          <iyy>0.000352096502918169</iyy>
+          <iyz>1.30635602608801E-19</iyz>
+          <izz>6.3329578705762E-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='elevator_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/elevator.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='elevator_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/elevator.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='elevator_joint' type='revolute'>
+      <pose>0 1.3739 0.17 1.5708 0.040426 1.5708</pose>
+      <child>elevator</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='rudder'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.0039829653811192 0.117786619293133 -0.000428313690817694 0 0 0</pose>
+        <mass>0.00519552270790543</mass>
+        <inertia>
+          <ixx>2.32455549928391E-05</ixx>
+          <ixy>1.25670300101702E-08</ixy>
+          <ixz>1.79671302680659E-08</ixz>
+          <iyy>5.69043771637136E-08</iyy>
+          <iyz>-5.09533985704648E-09</iyz>
+          <izz>2.32380324433504E-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rudder_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/rudder.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rudder_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://leap_vtol_mk3/meshes/rudder.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='rudder_joint' type='revolute'>
+      <pose>0 1.3739 0.17 1.5708 0.040426 1.5708</pose>
+      <child>rudder</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+	<plugin name='front_right_root_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_1_joint</jointName>
+		<linkName>motor_1</linkName>
+		<turningDirection>ccw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>1</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/1</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='front_left_root_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_2_joint</jointName>
+		<linkName>motor_2</linkName>
+		<turningDirection>cw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>2</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/2</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='back_left_root_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_3_joint</jointName>
+		<linkName>motor_3</linkName>
+		<turningDirection>ccw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>3</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/3</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='back_right_root_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_4_joint</jointName>
+		<linkName>motor_4</linkName>
+		<turningDirection>cw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>4</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/4</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='front_left_tip_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_5_joint</jointName>
+		<linkName>motor_5</linkName>
+		<turningDirection>ccw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>5</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/5</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='front_right_tip_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_6_joint</jointName>
+		<linkName>motor_6</linkName>
+		<turningDirection>cw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>6</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/6</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='back_right_tip_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_7_joint</jointName>
+		<linkName>motor_7</linkName>
+		<turningDirection>ccw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>7</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/7</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='back_left_tip_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>motor_8_joint</jointName>
+		<linkName>motor_8</linkName>
+		<turningDirection>cw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>1500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.06</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>8</motorNumber>
+		<rotorDragCoefficient>0.000806428</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/8</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='cruise_motor_model' filename='libgazebo_motor_model.so'>
+		<robotNamespace></robotNamespace>
+		<jointName>cruise_motor_joint</jointName>
+		<linkName>cruise_motor</linkName>
+		<turningDirection>ccw</turningDirection>
+		<timeConstantUp>0.0125</timeConstantUp>
+		<timeConstantDown>0.025</timeConstantDown>
+		<maxRotVelocity>3500</maxRotVelocity>
+		<motorConstant>8.54858e-06</motorConstant>
+		<momentConstant>0.01</momentConstant>
+		<commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+		<motorNumber>9</motorNumber>
+		<rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+		<rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+		<motorSpeedPubTopic>/motor_speed/9</motorSpeedPubTopic>
+		<rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+	</plugin>
+
+	<plugin name='left_wing' filename='libLiftDragPlugin.so'>
+		<a0>0.05984281113</a0>
+		<cla>4.752798721</cla>
+		<cda>0.6417112299</cda>
+		<cma>-1.8</cma>
+		<alpha_stall>0.3391428111</alpha_stall>
+		<cla_stall>-3.85</cla_stall>
+		<cda_stall>-0.9233984055</cda_stall>
+		<cma_stall>0</cma_stall>
+		<cp>-0.05 0.3 0.05</cp>
+		<area>0.50</area>
+		<air_density>1.2041</air_density>
+		<forward>1 0 0</forward>
+		<upward>0 0 1</upward>
+		<link_name>base_link</link_name>
+		<control_joint_name>
+		aileron_left_joint
+		</control_joint_name>
+		<control_joint_rad_to_cl>-1.0</control_joint_rad_to_cl>
+	</plugin>
+  
+	<plugin name='left_wing' filename='libLiftDragPlugin.so'>
+		<a0>0.05984281113</a0>
+		<cla>4.752798721</cla>
+		<cda>0.6417112299</cda>
+		<cma>-1.8</cma>
+		<alpha_stall>0.3391428111</alpha_stall>
+		<cla_stall>-3.85</cla_stall>
+		<cda_stall>-0.9233984055</cda_stall>
+		<cma_stall>0</cma_stall>
+		<cp>-0.05 0.3 0.05</cp>
+		<area>0.50</area>
+		<air_density>1.2041</air_density>
+		<forward>1 0 0</forward>
+		<upward>0 0 1</upward>
+		<link_name>base_link</link_name>
+		<control_joint_name>
+		aileron_left_joint
+		</control_joint_name>
+		<control_joint_rad_to_cl>-1.0</control_joint_rad_to_cl>
+	</plugin>
+
+	<plugin name='right_wing' filename='libLiftDragPlugin.so'>
+		<a0>0.05984281113</a0>
+		<cla>4.752798721</cla>
+		<cda>0.6417112299</cda>
+		<cma>-1.8</cma>
+		<alpha_stall>0.3391428111</alpha_stall>
+		<cla_stall>-3.85</cla_stall>
+		<cda_stall>-0.9233984055</cda_stall>
+		<cma_stall>0</cma_stall>
+		<cp>-0.05 -0.3 0.05</cp>
+		<area>0.50</area>
+		<air_density>1.2041</air_density>
+		<forward>1 0 0</forward>
+		<upward>0 0 1</upward>
+		<link_name>base_link</link_name>
+		<control_joint_name>
+		aileron_right_joint
+		</control_joint_name>
+		<control_joint_rad_to_cl>-1.0</control_joint_rad_to_cl>
+	</plugin>
+
+	<plugin name='elevator' filename='libLiftDragPlugin.so'>
+		<a0>-0.2</a0>
+		<cla>4.752798721</cla>
+		<cda>0.6417112299</cda>
+		<cma>-1.8</cma>
+		<alpha_stall>0.3391428111</alpha_stall>
+		<cla_stall>-3.85</cla_stall>
+		<cda_stall>-0.9233984055</cda_stall>
+		<cma_stall>0</cma_stall>
+		<cp>-0.5 0 0</cp>
+		<area>0.01</area>
+		<air_density>1.2041</air_density>
+		<forward>1 0 0</forward>
+		<upward>0 0 1</upward>
+		<link_name>base_link</link_name>
+		<control_joint_name>
+		elevator_joint
+		</control_joint_name>
+		<control_joint_rad_to_cl>-12.0</control_joint_rad_to_cl>
+	</plugin>
+
+	<plugin name='rudder' filename='libLiftDragPlugin.so'>
+		<a0>0.0</a0>
+		<cla>4.752798721</cla>
+		<cda>0.6417112299</cda>
+		<cma>-1.8</cma>
+		<alpha_stall>0.3391428111</alpha_stall>
+		<cla_stall>-3.85</cla_stall>
+		<cda_stall>-0.9233984055</cda_stall>
+		<cma_stall>0</cma_stall>
+		<cp>-0.5 0 0.05</cp>
+		<area>0.02</area>
+		<air_density>1.2041</air_density>
+		<forward>1 0 0</forward>
+		<upward>0 1 0</upward>
+		<link_name>base_link</link_name>
+	</plugin>
+
+	<plugin name='gazebo_imu_plugin' filename='libgazebo_imu_plugin.so'>
+		<robotNamespace></robotNamespace>
+		<linkName>leap_vtol_mk3/imu_link</linkName>
+		<imuTopic>/imu</imuTopic>
+		<gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
+		<gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
+		<gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>
+		<gyroscopeTurnOnBiasSigma>0.0087</gyroscopeTurnOnBiasSigma>
+		<accelerometerNoiseDensity>0.004</accelerometerNoiseDensity>
+		<accelerometerRandomWalk>0.006</accelerometerRandomWalk>
+		<accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
+		<accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
+	</plugin>
+
+	<plugin name='gps_plugin' filename='libgazebo_gps_plugin.so'>
+		<robotNamespace></robotNamespace>
+		<gpsNoise>true</gpsNoise>
+	</plugin>
+
+	<plugin name='magnetometer_plugin' filename='libgazebo_magnetometer_plugin.so'>
+		<robotNamespace/>
+		<pubRate>20</pubRate>
+		<noiseDensity>0.0004</noiseDensity>
+		<randomWalk>6.4e-06</randomWalk>
+		<biasCorrelationTime>600</biasCorrelationTime>
+		<magTopic>/mag</magTopic>
+	</plugin>
+
+	<plugin name='barometer_plugin' filename='libgazebo_barometer_plugin.so'>
+		<robotNamespace/>
+		<pubRate>10</pubRate>
+		<baroTopic>/baro</baroTopic>
+	</plugin>
+
+	<plugin name='mavlink_interface' filename='libgazebo_mavlink_interface.so'>
+		<robotNamespace></robotNamespace>
+		<imuSubTopic>/imu</imuSubTopic>
+		<gpsSubTopic>/gps</gpsSubTopic>
+		<magSubTopic>/mag</magSubTopic>
+		<baroSubTopic>/baro</baroSubTopic>
+		<mavlink_addr>INADDR_ANY</mavlink_addr>
+		<mavlink_udp_port>14560</mavlink_udp_port>
+		<serialEnabled>true</serialEnabled>
+		<serialDevice>/dev/ttyACM0</serialDevice>
+		<baudRate>921600</baudRate>
+		<qgc_addr>INADDR_ANY</qgc_addr>
+		<qgc_udp_port>14550</qgc_udp_port>
+		<sdk_addr>INADDR_ANY</sdk_addr>
+		<sdk_udp_port>14540</sdk_udp_port>
+		<hil_mode>true</hil_mode>
+		<hil_state_level>false</hil_state_level>
+		<enable_lockstep>true</enable_lockstep>
+		<use_tcp>true</use_tcp>
+		<motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
+		<control_channels>
+			<channel name="motor1">
+				<input_index>0</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_1_joint</joint_name>
+			</channel>
+			<channel name="motor2">
+				<input_index>1</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_2_joint</joint_name>
+			</channel>
+			<channel name="motor3">
+				<input_index>2</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_3_joint</joint_name>
+			</channel>
+			<channel name="motor4">
+				<input_index>3</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_4_joint</joint_name>
+			</channel>
+			<channel name="motor5">
+				<input_index>4</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>5500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_5_joint</joint_name>
+			</channel>
+			<channel name="motor6">
+				<input_index>5</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_6_joint</joint_name>
+			</channel>
+			<channel name="motor7">
+				<input_index>6</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_7_joint</joint_name>
+			</channel>
+			<channel name="motor8">
+				<input_index>7</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>motor_8_joint</joint_name>
+			</channel>
+			<channel name="cruisemotor">
+				<input_index>8</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1500</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>velocity</joint_control_type>
+				<joint_name>cruise_motor_joint</joint_name>
+			</channel>
+			<channel name="aileron_left">
+				<input_index>9</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>position_kinematic</joint_control_type>
+				<joint_name>aileron_left_joint</joint_name>
+			</channel>
+			<channel name="aileron_right">
+				<input_index>10</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>position_kinematic</joint_control_type>
+				<joint_name>aileron_right_joint</joint_name>
+			</channel>
+			<channel name="elevator">
+				<input_index>11</input_index>
+				<input_offset>0</input_offset>
+				<input_scaling>1</input_scaling>
+				<zero_position_disarmed>0</zero_position_disarmed>
+				<zero_position_armed>0</zero_position_armed>
+				<joint_control_type>position_kinematic</joint_control_type>
+				<joint_name>elevator_joint</joint_name>
+			</channel>
+		</control_channels>
+		<aileron_left_joint>
+		aileron_left_joint
+		</aileron_left_joint>
+		<aileron_right_joint>
+		aileron_right_joint
+		</aileron_right_joint>
+		<elevator_joint>
+		elevator_joint
+		</elevator_joint>
+	</plugin>
+
+    <static>0</static>
+  </model>
+</sdf>
